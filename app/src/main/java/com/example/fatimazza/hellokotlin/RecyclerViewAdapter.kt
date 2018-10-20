@@ -28,7 +28,7 @@ class RecyclerViewAdapter(private val context: Context, private val items:List<I
 
         fun bindItems(items: Item) {
             name.text = items.name
-            items.image?.let { Picasso.get().load(it).into(image) }
+            items.image?.let { Picasso.get().load(it).resize(2048, 1600).into(image) }
         }
         
     }
