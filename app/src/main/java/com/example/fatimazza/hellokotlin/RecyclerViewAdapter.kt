@@ -5,10 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_list.view.*
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_list.*
 
 class RecyclerViewAdapter(private val context: Context, private val items:List<Item>,
                           private val listener: (Item) -> Unit)
@@ -23,12 +22,12 @@ class RecyclerViewAdapter(private val context: Context, private val items:List<I
         holder.bindItems(items[position], listener)
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         fun bindItems(items: Item, listener: (Item) -> Unit) {
-            itemView.name.text = items.name
-            items.image?.let { Picasso.get().load(it).resize(2048, 1600).into(itemView.image) }
-            itemView.setOnClickListener { listener(items) }
+            name.text = items.name
+            items.image?.let { Picasso.get().load(it).resize(2048, 1600).into(image) }
+            containerView.setOnClickListener { listener(items) }
         }
         
     }
