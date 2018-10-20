@@ -9,7 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 
-class RecyclerViewAdapter(private val context: Context, private val items:List<Item>)
+class RecyclerViewAdapter(private val context: Context, private val items:List<Item>,
+                          private val listener: (Item) -> Unit)
     : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -18,7 +19,7 @@ class RecyclerViewAdapter(private val context: Context, private val items:List<I
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItems(items[position])
+        holder.bindItems(items[position], listener)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -26,9 +27,10 @@ class RecyclerViewAdapter(private val context: Context, private val items:List<I
         private val name = view.findViewById<TextView>(R.id.name)
         private val image = view.findViewById<ImageView>(R.id.image)
 
-        fun bindItems(items: Item) {
+        fun bindItems(items: Item, listener: (Item) -> Unit) {
             name.text = items.name
             items.image?.let { Picasso.get().load(it).resize(2048, 1600).into(image) }
+            itemView.setOnClickListener { listener(items) }
         }
         
     }
