@@ -49,7 +49,13 @@ class AnkoCommonActivity : AppCompatActivity() {
                 button("Show Selector") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
-                    onClick {  }
+                    onClick {
+                        // val club = listOf("Barcelona", "Real Madrid", "Bayern Munchen", "Liverpool")
+                        val club = resources.getTextArray(R.array.club_name).toList()
+                        selector("Hello ${name.text} what football club you like?", club) {
+                            _,i -> toast("So you like ${club[i]} ..")
+                        }
+                    }
                 }.lparams(width = matchParent) {
                     topMargin = dip(5)
                 }
