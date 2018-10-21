@@ -79,7 +79,7 @@ class AnkoCommonActivity : AppCompatActivity() {
                 button("Go To Other Activity") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
-                    onClick {  }
+                    onClick { startActivity<AnkoCommonIntentActivity>("name" to "${name.text}") }
                 }.lparams(width = matchParent) {
                     topMargin = dip(5)
                 }
