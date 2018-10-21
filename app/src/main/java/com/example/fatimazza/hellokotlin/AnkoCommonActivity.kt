@@ -36,7 +36,12 @@ class AnkoCommonActivity : AppCompatActivity() {
                 button("Show Alert") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
-                    onClick {  }
+                    onClick {
+                        alert("Happy Coding!", "Hello, ${name.text}") {
+                            yesButton { toast("Yesss!!") }
+                            noButton {  }
+                        }.show()
+                    }
                 }.lparams(width = matchParent){
                     topMargin = dip(5)
                 }
