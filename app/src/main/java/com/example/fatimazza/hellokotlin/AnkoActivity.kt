@@ -2,10 +2,7 @@ package com.example.fatimazza.hellokotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import org.jetbrains.anko.AnkoComponent
-import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.setContentView
+import org.jetbrains.anko.*
 
 class AnkoActivity : AppCompatActivity() {
 
@@ -15,9 +12,12 @@ class AnkoActivity : AppCompatActivity() {
     }
 
     class AnkoActivityUI() : AnkoComponent<AnkoActivity> {
-        override fun createView(ui: AnkoContext<AnkoActivity>): View {
-            TODO("not implemented")
-            //To change body of created functions use File | Settings | File Templates.
+        override fun createView(ui: AnkoContext<AnkoActivity>) = with(ui) {
+            verticalLayout {
+                val name = editText() {
+                    hint = "What's your name"
+                }
+            }
         }
     }
 }
