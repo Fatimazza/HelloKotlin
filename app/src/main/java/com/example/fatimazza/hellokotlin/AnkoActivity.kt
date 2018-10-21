@@ -14,9 +14,13 @@ class AnkoActivity : AppCompatActivity() {
     class AnkoActivityUI() : AnkoComponent<AnkoActivity> {
         override fun createView(ui: AnkoContext<AnkoActivity>) = with(ui) {
             verticalLayout {
+                padding = dip(16)
+                imageView(R.drawable.img_barca)
+                        .lparams(width = dip(150), height = dip(150))
                 val name = editText() {
                     hint = "What's your name"
                 }
+                button("Say Hello!")
             }
         }
     }
