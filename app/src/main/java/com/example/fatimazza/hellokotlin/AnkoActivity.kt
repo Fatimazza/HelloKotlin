@@ -30,6 +30,9 @@ class AnkoActivity : AppCompatActivity() {
                         }.show()
                     }
                 }
+                button("Jump to Other Activity") {
+                    onClick { startActivity<MainActivity>() }
+                }
             }
         }
     }
