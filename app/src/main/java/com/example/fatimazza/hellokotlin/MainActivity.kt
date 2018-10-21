@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         club_list.layoutManager = LinearLayoutManager(this)
         club_list.adapter = RecyclerViewAdapter(this, items) {
             startActivity<DetailActivity>(
-                    "name" to "${it.name}", "desc" to "${it.desc}")
+                    "name" to "${it.name}", "desc" to "${it.desc}", "img" to it.image)
         }
     }
 
