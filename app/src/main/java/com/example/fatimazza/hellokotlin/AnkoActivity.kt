@@ -3,6 +3,7 @@ package com.example.fatimazza.hellokotlin
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import org.jetbrains.anko.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class AnkoActivity : AppCompatActivity() {
 
@@ -20,8 +21,17 @@ class AnkoActivity : AppCompatActivity() {
                 val name = editText() {
                     hint = "What's your name"
                 }
-                button("Say Hello!")
+                button("Say Hello!") {
+                    onClick {
+                        indeterminateProgressDialog("Please Wait").show()
+                        alert("Happy coding ${name.text}") {
+                            yesButton { toast("Hello ${name.text}") }
+                            noButton {  }
+                        }.show()
+                    }
+                }
             }
         }
     }
+
 }
