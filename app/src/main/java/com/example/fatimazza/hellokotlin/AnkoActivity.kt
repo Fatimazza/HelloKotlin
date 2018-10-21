@@ -7,9 +7,15 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class AnkoActivity : AppCompatActivity() {
 
+    private val log = AnkoLogger(this.javaClass)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AnkoActivityUI().setContentView(this)
+
+        log.info { "Info - This is $localClassName class" }
+        log.warn { "Warn - This is $localClassName class" }
+        log.debug { "Debug - This is $localClassName class" }
     }
 
     class AnkoActivityUI() : AnkoComponent<AnkoActivity> {
