@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import com.example.fatimazza.hellokotlin.R.color.colorAccent
 import org.jetbrains.anko.*
+import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class AnkoCommonActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class AnkoCommonActivity : AppCompatActivity() {
                 button("Say Hello") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
-                    onClick {  }
+                    onClick { toast("Hello, ${name.text} !") }
                 }.lparams(width = matchParent) {
                     topMargin = dip(5)
                 }
@@ -51,7 +52,7 @@ class AnkoCommonActivity : AppCompatActivity() {
                 button("Show Snackbar") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
-                    onClick {  }
+                    onClick { snackbar(name, "Hello , ${name.text}!") }
                 }.lparams(width = matchParent) {
                     topMargin = dip(5)
                 }
@@ -59,7 +60,7 @@ class AnkoCommonActivity : AppCompatActivity() {
                 button("Show Progress Bar") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
-                    onClick {  }
+                    onClick { indeterminateProgressDialog("Hello, ${name.text}, please wait...").show() }
                 }.lparams(width = matchParent) {
                     topMargin = dip(5)
                 }
