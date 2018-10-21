@@ -34,35 +34,35 @@ class AnkoCommonActivity : AppCompatActivity() {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
                 }.lparams(width = matchParent){
-                    topPadding = dip(5)
+                    topMargin = dip(5)
                 }
 
                 button("Show Selector") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
                 }.lparams(width = matchParent) {
-                    topPadding = dip(5)
+                    topMargin = dip(5)
                 }
 
                 button("Show Snackbar") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
                 }.lparams(width = matchParent) {
-                    topPadding = dip(5)
+                    topMargin = dip(5)
                 }
 
                 button("Show Progress Bar") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
                 }.lparams(width = matchParent) {
-                    topPadding = dip(5)
+                    topMargin = dip(5)
                 }
 
                 button("Go To Other Activity") {
                     backgroundColor = ContextCompat.getColor(context, colorAccent)
                     textColor = Color.WHITE
                 }.lparams(width = matchParent) {
-                    topPadding = dip(5)
+                    topMargin = dip(5)
                 }
             }
         }
