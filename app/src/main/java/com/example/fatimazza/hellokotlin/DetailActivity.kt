@@ -12,15 +12,16 @@ class DetailActivity : AppCompatActivity() {
     var name: String = ""
     var description: String = ""
     var image: Int = R.drawable.img_barca
-    lateinit var textName: TextView
-    lateinit var textDesc: TextView
-    lateinit var ivImage: ImageView
+
+    private lateinit var textName: TextView
+    private lateinit var textDesc: TextView
+    private lateinit var ivImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         getIntentExtras()
-        createLayout()
+        DetailActivityUI().setContentView(this)
 
         textName.text = name
         textDesc.text = description
@@ -34,24 +35,27 @@ class DetailActivity : AppCompatActivity() {
         image = intent.getIntExtra("img", 0)
     }
 
-    private fun createLayout() {
-        verticalLayout {
-            gravity = CENTER_HORIZONTAL
-            padding = dip(16)
+    class DetailActivityUI: AnkoComponent<DetailActivity> {
 
-            ivImage = imageView()
-                    .lparams(width = dip(80), height = dip(80))
+        override fun createView(ui: AnkoContext<DetailActivity>) = with(ui) {
+            verticalLayout {
+                gravity = CENTER_HORIZONTAL
+                padding = dip(16)
 
-            textName = textView()
-                    .lparams(wrapContent) {
-                        topMargin = dip(5)
-                    }
+                owner.ivImage = imageView()
+                        .lparams(width = dip(80), height = dip(80))
+
+                owner.textName = textView()
+                        .lparams(wrapContent) {
+                            topMargin = dip(5)
+                        }
 
 
-            textDesc = textView()
-                    .lparams(matchParent) {
-                        topMargin = dip(10)
-                    }
+                owner.textDesc = textView()
+                        .lparams(matchParent) {
+                            topMargin = dip(10)
+                        }
+            }
         }
     }
 
