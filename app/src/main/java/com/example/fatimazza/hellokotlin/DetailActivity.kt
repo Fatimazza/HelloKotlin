@@ -22,10 +22,7 @@ class DetailActivity : AppCompatActivity() {
 
         getIntentExtras()
         DetailActivityUI().setContentView(this)
-
-        textName.text = name
-        textDesc.text = description
-        ivImage.setImageResource(image)
+        loadIntentExtras()
     }
 
     private fun getIntentExtras() {
@@ -33,6 +30,12 @@ class DetailActivity : AppCompatActivity() {
         name = intent.getStringExtra("name")
         description = intent.getStringExtra("desc")
         image = intent.getIntExtra("img", 0)
+    }
+
+    private fun loadIntentExtras() {
+        textName.text = name
+        textDesc.text = description
+        ivImage.setImageResource(image)
     }
 
     class DetailActivityUI: AnkoComponent<DetailActivity> {
